@@ -106,3 +106,29 @@ function invalidateSession(){
 		}) 
 }
 
+function enterPersonInfo(name,page){
+	
+	$.ajax({
+            type :"GET",
+            url  : "https://app.hanye.com.tw/pl-admin/api/category/list",
+            async : false,
+       		data : { 
+       			mid : name
+	        }, 
+            success : function(data) {
+            	data = data.sort(function (a, b) {
+            		 return a.cid > b.cid ? 1 : -1;
+            	});
+				$.each(data, function(key, obj) {
+            		var appendCategory = "<li><a href='#' onclick=searchVideo("+ obj.cid +",'" + page + "');  class='page-nav-item'> <i class='icon-video icon'></i> " + obj.name + "</a></li>";						
+            		$("#pageNav").append(appendCategory);
+	            });
+					
+        	},
+        	error : function(xhr,ajaxOption,error) {
+        		alert(xhr.responseText);
+        	}
+        }) 
+}
+
+

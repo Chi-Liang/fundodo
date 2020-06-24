@@ -15,7 +15,8 @@ function changeStatus(name,page){
             		var appendCategory = "<li><a href='#' onclick=searchVideo("+ obj.cid +",'" + page + "');  class='page-nav-item'> <i class='icon-video icon'></i> " + obj.name + "</a></li>";						
             		$("#pageNav").append(appendCategory);
 	            });
-					
+				var appendCategory = "<li><a href='#' onclick=getPersonInfo('"+ page +"','" + name + "');  class='page-nav-item'> <i class='icon-video icon'></i> 個資輸入 </a></li>";						
+        		$("#pageNav").append(appendCategory);	
         	},
         	error : function(xhr,ajaxOption,error) {
         		alert(xhr.responseText);
@@ -60,7 +61,7 @@ function successStatus(data){
 	$("#title").text(data.title);
 	$("#subtitle").text(data.subtitle);
 	$("#description").text(data.description);
-	$("#fileDownload").css('display','none');
+	$("#fileDownload,#personInfo").css('display','none');
 	if(data.fileUrl != "" && data.fileUrl != undefined){
 			$("#fileDownload").css('display','block');
 			$("#fileUrl").text(data.fileUrl);
@@ -106,23 +107,40 @@ function invalidateSession(){
 		}) 
 }
 
-function enterPersonInfo(name,page){
+
+function getPersonInfo(page,name){
 	
 	$.ajax({
             type :"GET",
-            url  : "https://app.hanye.com.tw/pl-admin/api/category/list",
+            url  : "https://app.hanye.com.tw/pl-admin/api/personInfo/byMember",
             async : false,
        		data : { 
        			mid : name
 	        }, 
             success : function(data) {
-            	data = data.sort(function (a, b) {
-            		 return a.cid > b.cid ? 1 : -1;
-            	});
-				$.each(data, function(key, obj) {
-            		var appendCategory = "<li><a href='#' onclick=searchVideo("+ obj.cid +",'" + page + "');  class='page-nav-item'> <i class='icon-video icon'></i> " + obj.name + "</a></li>";						
-            		$("#pageNav").append(appendCategory);
-	            });
+            	
+            	$("#videoPlayer,#subtitle,#title,#description,#videoInfo,#fileDownload").css('display','none');
+            	$("#"+ page).css('display','none');	
+            	$("#personInfo").css('display','block');
+            	
+        	},
+        	error : function(xhr,ajaxOption,error) {
+        		alert(xhr.responseText);
+        	}
+        }) 
+}
+
+function enterPersonInfo(name,page){
+	
+	$.ajax({
+            type :"POST",
+            url  : "https://app.hanye.com.tw/pl-admin/api/personInfo/insertOrUpdate",
+            async : false,
+       		data : { 
+       			mid : name
+	        }, 
+            success : function(data) {
+            	
 					
         	},
         	error : function(xhr,ajaxOption,error) {

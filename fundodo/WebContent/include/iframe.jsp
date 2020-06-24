@@ -14,3 +14,44 @@
                 </a>
                  <div id = "fileUrl" style="display: none;"></div>
              </div>
+           <!-- 個人資料 -->  
+           <div id="personInfo" align="center"  style="display: none" ><br>
+				<fieldset style="width: 100%;">
+					<table align="center">
+						<tr>
+							<td>姓名</td>
+							<td><input type="text" name="name" value=""></td>
+						</tr>
+						<tr>
+							<td>暱稱</td>
+							<td><input type="text" name="nickname" value=""></td>
+						</tr>
+						<tr>
+							<td>性別</td>
+							<td><input type="radio" name="sex" value="male" id="sex_male">
+								<label for="sex_male">男</label>
+							<td><input type="radio" name="sex" value="female"
+								id="sex_female"> <label for="sex_female">女</label></td>
+						</tr>
+						<tr>
+							<td>年齡</td>
+							<td><input type="age" name="age" value=""></td>
+						</tr>
+						<tr>
+							<td>生日</td>
+							<td><input type="text" name="birthday" value="">
+								yyyy-MM-dd</td>
+						</tr>
+						<tr>
+							<td>描述</td>
+							<td><textarea name="description" rows="5"></textarea></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="submit" value="" /> <input type="button"
+								value="回上一頁" onclick="history.go(-1)" /></td>
+						</tr>
+			
+					</table>
+				</fieldset>
+			</div>

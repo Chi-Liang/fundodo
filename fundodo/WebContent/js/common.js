@@ -119,6 +119,35 @@ function getPersonInfo(page,name){
 	        }, 
             success : function(data) {
             	
+            	$("#name").val(data.name);
+            	$("#taxId").val(data.taxId);
+            	$("#birthday").val(data.birthday);
+            	$("#phone").val(data.phone);
+            	$("#email").val(data.email);
+            	$("#residenceAddress").val(data.residenceAddress);
+            	$("#communicationAddress").val(data.communicationAddress);
+            	$("#company").val(data.company);
+            	$("#position").val(data.position);
+            	$("#seniority").val(data.seniority);
+            	$("#workspace").val(data.workspace);
+            	$("#monthlySalary").val(data.monthlySalary);
+            	$("#fundInvestment").val(data.fundInvestment);
+            	$("#stockInvestment").val(data.stockInvestment);
+            	$("#insurance").val(data.insurance);
+            	$("#otherIncome").val(data.otherIncome);
+            	$("#averageBalance").val(data.averageBalance);
+            	
+            	$("input[name=withholdVoucher][value='" +data.withholdVoucher +"']").attr('checked',true);
+            	$("input[name=payrollTransfer][value='" +data.payrollTransfer +"']").attr('checked',true);
+            	$("input[name=laborProtection][value='" +data.laborProtection +"']").attr('checked',true);
+            	$("input[name=realEstate][value='" +data.realEstate +"']").attr('checked',true);
+            	
+            	$("#studentLoan").attr("checked",data.studentLoan == "1" ? true : false ); 
+            	$("#carLoan").attr("checked",data.carLoan == "1" ? true : false ); 
+            	$("#housingLoan").attr("checked",data.housingLoan == "1" ? true : false ); 
+            	$("#creditLoan").attr("checked",data.creditLoan == "1" ? true : false );  
+            	$("#otherLoans").attr("checked",data.otherLoans == "1" ? true : false ); 
+            	
             	$("#videoPlayer,#subtitle,#title,#description,#videoInfo,#fileDownload").css('display','none');
             	$("#"+ page).css('display','none');	
             	$("#personInfo").css('display','block');

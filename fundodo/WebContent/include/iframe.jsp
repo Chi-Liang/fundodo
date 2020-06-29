@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%
+	String userName=(String)session.getAttribute("name");
+%>
+
 <iframe id="videoPlayer" style="display: none" src="https://player.vimeo.com/video/1625913" class="iframe-1 iframe-s-1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
            	 <div id="videoInfo" style="display: none">
 				<div class="videotitle mt-2">
@@ -76,28 +81,28 @@
 							<td>扣繳憑單:</td>
 							<td><input type="radio" name="withholdVoucher" value="1" id="withholdVoucherYes" />
 								<label for="withholdVoucherYes">有</label>
-							<td><input type="radio" name="withholdVoucher" value="0"  id="withholdVoucherNo" style="margin-left: -150px;" />
+							<td><input type="radio" name="withholdVoucher" value="0"  id="withholdVoucherNo" style="margin-left: -150px;" checked="checked" />
 								<label for="withholdVoucherNo">無</label></td>
 						</tr>
 						<tr>
 							<td>薪資轉帳:</td>
 							<td><input type="radio" name="payrollTransfer" value="1" id="payrollTransferYes" />
 								<label for="payrollTransferYes">有</label>
-							<td><input type="radio" name="payrollTransfer" value="0" id="payrollTransferNo" style="margin-left: -150px;" />
+							<td><input type="radio" name="payrollTransfer" value="0" id="payrollTransferNo" style="margin-left: -150px;" checked="checked" />
 							    <label for="payrollTransferNo">無</label></td>
 						</tr>
 						<tr>
 							<td>勞保:</td>
 							<td><input type="radio" name="laborProtection" value="1" id="laborProtectionYes" />
 								<label for="laborProtectionYes">有</label>
-							<td><input type="radio" name="laborProtection" value="0" id="laborProtectionNo" style="margin-left: -150px;" />
+							<td><input type="radio" name="laborProtection" value="0" id="laborProtectionNo" style="margin-left: -150px;" checked="checked" />
 							    <label for="laborProtectionNo">無</label></td>
 						</tr>
 						<tr>
 							<td>名下不動產:</td>
 							<td><input type="radio" name="realEstate" value="1" id="realEstateYes" />
 								<label for="realEstateYes">有</label>
-							<td><input type="radio" name="realEstate" value="0" id="realEstateNo"  style="margin-left: -150px;" />
+							<td><input type="radio" name="realEstate" value="0" id="realEstateNo"  style="margin-left: -150px;" checked="checked" />
 							    <label for="realEstateNo">無</label></td>
 						</tr>
 						<tr>
@@ -114,9 +119,9 @@
 								<input type="checkbox" id="otherLoans" name="otherLoans"  />
 								<label for="otherLoans">其他</label>
 							</td>
-							<td></td>
-							<td><input type="button" style="color: red;"
-								value="送出" onclick="history.go(-1)" /></td>	
+								<td id="mid" style="visibility: hidden;" ><%=userName%></td>
+								<td><input type="button" style="color: red;"
+									value="送出" onclick="enterPersonInfo();" /></td>
 						</tr>
 						
 					</table>

@@ -113,6 +113,8 @@ function getPersonInfo(page,name){
 	$.ajax({
             type :"GET",
             url  : "https://app.hanye.com.tw/pl-admin/api/personInfo/byMember",
+            dataType : 'json', 
+            contentType : 'application/json; charset=utf-8',
             async : false,
        		data : { 
        			mid : name
@@ -159,18 +161,76 @@ function getPersonInfo(page,name){
         }) 
 }
 
-function enterPersonInfo(name,page){
+function enterPersonInfo(){
+	
+	var userName = $("#mid").text();
+	var name = $("#name").val();
+	var taxId = $("#taxId").val();
+	var birthday = $("#birthday").val();
+	var phone = $("#phone").val();
+	var email = $("#email").val();
+	var residenceAddress = $("#residenceAddress").val();
+	var communicationAddress = $("#communicationAddress").val();
+	var company = $("#company").val();
+	var position = $("#position").val();
+	var seniority = $("#seniority").val();
+	var workspace = $("#workspace").val();
+	var monthlySalary = $("#monthlySalary").val();
+	var fundInvestment = $("#fundInvestment").val();
+	var stockInvestment = $("#stockInvestment").val();
+	var insurance = $("#insurance").val();
+	var otherIncome = $("#otherIncome").val();
+	var averageBalance = $("#averageBalance").val();
+	
+	var withholdVoucher =$("input[name='withholdVoucher']:checked").val(); 
+	var payrollTransfer =$("input[name='payrollTransfer']:checked").val(); 
+	var laborProtection =$("input[name='laborProtection']:checked").val(); 
+	var realEstate =$("input[name='realEstate']:checked").val(); 
+	
+	var studentLoan = $("#studentLoan").is(":checked") ? "1" : "0";
+	var carLoan = $("#carLoan").is(":checked") ? "1" : "0";
+	var housingLoan = $("#housingLoan").is(":checked") ? "1" : "0";
+	var creditLoan = $("#creditLoan").is(":checked") ? "1" : "0";
+	var otherLoans = $("#otherLoans").is(":checked") ? "1" : "0";
+	
+	var obj = {};
+	obj.mid = userName;
+	obj.name = name;
+	obj.taxId = taxId;
+	obj.birthday = birthday;
+	obj.phone = phone;
+	obj.email = email;
+	obj.residenceAddress = residenceAddress;
+	obj.communicationAddress = communicationAddress;
+	obj.company = company;
+	obj.position = position;
+	obj.seniority = seniority;
+	obj.workspace = workspace;
+	obj.monthlySalary = monthlySalary;
+	obj.fundInvestment = fundInvestment;
+	obj.stockInvestment = stockInvestment;
+	obj.insurance = insurance;
+	obj.otherIncome = otherIncome;
+	obj.averageBalance = averageBalance;
+	obj.withholdVoucher = withholdVoucher;
+	obj.payrollTransfer = payrollTransfer;
+	obj.laborProtection = laborProtection;
+	obj.realEstate = realEstate;
+	obj.studentLoan = studentLoan;
+	obj.carLoan = carLoan;
+	obj.housingLoan = housingLoan;
+	obj.creditLoan = creditLoan;
+	obj.otherLoans = otherLoans;
 	
 	$.ajax({
             type :"POST",
             url  : "https://app.hanye.com.tw/pl-admin/api/personInfo/insertOrUpdate",
             async : false,
-       		data : { 
-       			mid : name
-	        }, 
+            dataType : 'json', 
+            contentType : 'application/json; charset=utf-8', 
+            data : JSON.stringify(obj),
             success : function(data) {
-            	
-					
+				alert("save success");	
         	},
         	error : function(xhr,ajaxOption,error) {
         		alert(xhr.responseText);

@@ -226,7 +226,6 @@ function enterPersonInfo(){
             type :"POST",
             url  : "https://app.hanye.com.tw/pl-admin/api/personInfo/insertOrUpdate",
             async : false,
-            dataType : 'json', 
             contentType : 'application/json; charset=utf-8', 
             data : JSON.stringify(obj),
             success : function(data) {

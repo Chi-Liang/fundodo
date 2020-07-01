@@ -110,6 +110,58 @@ function invalidateSession(){
 
 function getPersonInfo(page,name){
 	
+	
+	debugger;
+	
+	
+	jQuery.validator.setDefaults({
+		   success: "valid",
+	       errorPlacement : function(error, element) {
+				element.next().css("color", "red");
+				/* $("#" + element.next()[0].getAttribute("id")).hide();
+				if (error.text() == '') {
+					element.next().css("color", "blue");
+					element.next().html("ok");
+					$("#" + element.next()[0].getAttribute("id")).show(); 
+				} else {
+					element.next().css("color", "red");
+					element.next()[0].getAttribute("id");
+					//$("#" + element.next()[0].getAttribute("id")).css('display','block');
+					$("#" + element.next()[0].getAttribute("id")).show();
+					element.next().html(error.text());
+				} */
+			}, 
+			
+			
+			submitHandler: function(form){
+	            alert("submit");    
+	            enterPersonInfo();
+	        }		
+
+		});
+	
+	$("#myform").validate({
+		rules : {
+			phone : {
+				required : true
+				
+			}
+			
+		},
+
+	});
+	
+    $("#birthday").datepicker(
+			  {
+			  dateFormat:"yy-mm-dd",
+			  yearRange:"-70:+0",
+			  changeMonth: true,
+			  changeYear: true,
+			  autoSize: true ,
+			  defaultDate:(new Date(new Date().getFullYear()-20+"/01/01")-new Date())/(1000*60*60*24),
+			  maxDate:new Date()
+			  });
+	
 	$.ajax({
             type :"GET",
             url  : "https://app.hanye.com.tw/pl-admin/api/personInfo/byMember",

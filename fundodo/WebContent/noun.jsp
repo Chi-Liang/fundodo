@@ -25,7 +25,7 @@
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
-	    $(function(){
+    	$(function(){
 			
 			<%
 			String userName=(String)session.getAttribute("name");

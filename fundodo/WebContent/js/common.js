@@ -110,57 +110,96 @@ function invalidateSession(){
 
 function getPersonInfo(page,name){
 	
+	$("#nameFlag,#taxIdFlag,#birthdayFlag,#phoneFlag,#emailFlag,#residenceAddressFlag,#communicationAddressFlag").hide();
 	
-	debugger;
+	jQuery.validator.addMethod("isPhone", function(value, element) {
+        var mobile = /^09\d{8}$/;
+        var oPhoneHPhone = /^([0-9]|\(|\)|\#|\-|H)*$/;
+        return oPhoneHPhone.test(value) || mobile.test(value);
+       }, "");
 	
+	jQuery.validator.addMethod("isEmail", function(value, element) {
+        var emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+        return emailRule.test(value);
+       }, "");
 	
-	jQuery.validator.setDefaults({
-		   success: "valid",
-	       errorPlacement : function(error, element) {
+	jQuery.validator.addMethod("isTaxId", function(value, element) {
+        var taxIdRule = /^[A-Z]\d{9}$/;
+        return taxIdRule.test(value);
+       }, "");
+	
+	var validator = $("#myform").validate({
+		rules : {
+			name : {
+				required : true
+			},
+			taxId : {
+				required : true,
+				isTaxId  : true
+			},
+			birthday : {
+				required : true
+			},
+			phone : {
+				required : true,
+				isPhone : true
+			},
+			email : {
+				required : true,
+				isEmail  : true
+			},
+			residenceAddress : {
+				required : true
+			},
+			communicationAddress : {
+				required : true
+			},
+		},
+		
+		messages : {
+			phone : {
+				isPhone : "Please enter the correct phone number."
+			},
+			email : {
+				isEmail : "Please enter the correct email."
+			},
+			taxId : {
+				isTaxId : "Please enter the correct taxId."
+			}
+		},
+		
+		  success: "valid",
+	      errorPlacement : function(error, element) {
 				element.next().css("color", "red");
-				/* $("#" + element.next()[0].getAttribute("id")).hide();
+				$("#" + element.next()[0].getAttribute("id")).hide();
 				if (error.text() == '') {
-					element.next().css("color", "blue");
-					element.next().html("ok");
-					$("#" + element.next()[0].getAttribute("id")).show(); 
+//					element.next().css("color", "blue");
+//					element.next().html("ok");
+//					$("#" + element.next()[0].getAttribute("id")).show(); 
 				} else {
 					element.next().css("color", "red");
 					element.next()[0].getAttribute("id");
-					//$("#" + element.next()[0].getAttribute("id")).css('display','block');
 					$("#" + element.next()[0].getAttribute("id")).show();
 					element.next().html(error.text());
-				} */
+				} 
 			}, 
 			
-			
 			submitHandler: function(form){
-	            alert("submit");    
 	            enterPersonInfo();
 	        }		
-
-		});
-	
-	$("#myform").validate({
-		rules : {
-			phone : {
-				required : true
-				
-			}
-			
-		},
-
 	});
 	
-    $("#birthday").datepicker(
+	
+	$("#birthday").datepicker(
 			  {
 			  dateFormat:"yy-mm-dd",
-			  yearRange:"-70:+0",
+			  yearRange:"-100:+0",
 			  changeMonth: true,
 			  changeYear: true,
 			  autoSize: true ,
-			  defaultDate:(new Date(new Date().getFullYear()-20+"/01/01")-new Date())/(1000*60*60*24),
+			  defaultDate:(new Date(new Date().getFullYear()-30+"/01/01")-new Date())/(1000*60*60*24),
 			  maxDate:new Date()
-			  });
+	 });
 	
 	$.ajax({
             type :"GET",

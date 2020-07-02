@@ -26,25 +26,39 @@
 						<table align="center">
 							<tr>
 								<td>姓名:</td>
-								<td><input type="text" id="name" value="" /></td>
-								<td>身分證字號:</td>
-								<td><input type="text" id="taxId" value="" /></td>
+								<td><input type="text" id="name" name="name" value="" />
+									<div id="nameFlag"  style="margin-top: -5px;" ></div>
+								</td>
+								<td style="text-align: right;">身分證字號:</td>
+								<td><input type="text" id="taxId" name="taxId" value="" />
+									<div id="taxIdFlag"  style="margin-top: -5px;" ></div>
+								</td>
 								<td>生日:</td>
-								<td><input type="text" id="birthday" readonly="readonly" /></td>
+								<td><input type="text" id="birthday" name="birthday" readonly="readonly" value="" />
+									<div id="birthdayFlag"  style="margin-top: -5px;" ></div>
+								</td>
 							</tr>
 							<tr>
 								<td>通訊電話:</td>
-								<td><input type="text" id="phone" name="phone" value="" /></td>
+								<td><input type="text" id="phone" name="phone" value="" />
+									<div id="phoneFlag"  style="margin-top: -5px;" ></div>
+								</td>
 								<td style="text-align: right;">信箱:</td>
-								<td><input type="text" id="email" value="" /></td>
+								<td><input type="text" id="email" name="email" value="" />
+									<div id="emailFlag"  style="margin-top: -5px;" ></div>
+								</td>
 							</tr>
 							<tr>
 								<td>戶籍地址:</td>
-								<td><textarea style="width: 300%" id="residenceAddress" value="" rows="1" name="residenceAddress" ></textarea></td>
+								<td><textarea style="width: 300%" id="residenceAddress" name="residenceAddress" value="" rows="1" ></textarea>
+									<div id="residenceAddressFlag"  style="margin-top: -5px;" >xxxxxxxx</div>
+								</td>
 							</tr>
 							<tr>
 								<td>通訊地址:</td>
-								<td><textarea style="width: 300%" id="communicationAddress" value="" rows="1" ></textarea></td>
+								<td><textarea style="width: 300%" id="communicationAddress" name="communicationAddress" value="" rows="1" ></textarea>
+									<div id="communicationAddressFlag"  style="margin-top: -5px;" >xxxxxx</div>
+								</td>
 							</tr>
 							<tr>
 								<td>服務公司:</td>

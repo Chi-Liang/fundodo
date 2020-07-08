@@ -27,6 +27,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="QA.jsp">常見問題</a>
                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="personInfo.jsp">個資輸入</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">登出</a>
                     </li>

@@ -1,26 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>房多多</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>房多多</title>
+	<link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
-<%
-	String userName=(String)session.getAttribute("name");
-%>
+    <!-- font-icon -->
+    <link rel="stylesheet" href="css/fonts/css/fontello.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slick-theme.css">
+    <link rel="stylesheet" href="css/lightcase.css">
 
-<iframe id="videoPlayer" style="display: none" src="https://player.vimeo.com/video/1625913" class="iframe-1 iframe-s-1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-           	 <div id="videoInfo" style="display: none">
-				<div class="videotitle mt-2">
-                    <h2 id="title" class="title">影片標題影片標題影片標題影片標題影片標題影片標題影片標題</h2>
-                    <h4 id="subtitle" class="subtitle">影片小標題影片小標題影片小標題影片小標題影片小標題影小片標題影片小標題</h4>
-                </div>
-                <div class="video-content">
-                    <p id="description">影片說明影片說明影片說明影片說明影片說明影片說明影片說明影片說明影片說明影片說明影片影片說明影片說明影片說明影片說明影片說明影片說明影片說明影片說明影片說明影片說明影片</p>
-                </div>
-                 <br>
-                <a id = "fileDownload" class="download-btn" >
-                    <img class="img-fluid" src="images/download-btn.jpg" alt="">
-                </a>
-                 <div id = "fileUrl" style="display: none;"></div>
-             </div>
-           <!-- 個人資料 
-           <div id="personInfo" align="center"  style="display: none;margin-top: 0px;padding-top: 0px;" ><br>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/iframe.css">
+
+    <script src="js/jquery.min.js"></script>
+    <!-- <script src="js/jquery.easing.1.3.js"></script> -->
+    <script src="js/slick.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/lightcase.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/common.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript">
+	 $(function(){
+			<%
+			String userName=(String)session.getAttribute("name");
+			%>
+			var name = "<%=userName%>";
+			getPersonInfo(null,name);
+			checkSession();
+	 });
+	</script>
+	
+
+</head>
+<body>
+ <!-- 個人資料 -->
+ 		   <jsp:include page="/include/header.jsp" flush="true"/>	  
+           <div id="personInfo" align="center" style="margin-bottom: 30px;" ><br>
 	           <form id="myform" action="">
 					<fieldset style="width: 100%;">
 						<table align="center">
@@ -51,13 +80,13 @@
 							<tr>
 								<td>戶籍地址:</td>
 								<td><textarea style="width: 300%" id="residenceAddress" name="residenceAddress" value="" rows="1" ></textarea>
-									<div id="residenceAddressFlag"  style="margin-top: -5px;" >xxxxxxxx</div>
+									<div id="residenceAddressFlag"  style="margin-top: -5px;" ></div>
 								</td>
 							</tr>
 							<tr>
 								<td>通訊地址:</td>
 								<td><textarea style="width: 300%" id="communicationAddress" name="communicationAddress" value="" rows="1" ></textarea>
-									<div id="communicationAddressFlag"  style="margin-top: -5px;" >xxxxxx</div>
+									<div id="communicationAddressFlag"  style="margin-top: -5px;" ></div>
 								</td>
 							</tr>
 							<tr>
@@ -142,4 +171,8 @@
 						</table>
 					</fieldset>
 				</form>	
-			</div> --> 
+			</div>
+		<jsp:include page="/include/footer.jsp" flush="true"/>	
+			
+</body>
+</html>

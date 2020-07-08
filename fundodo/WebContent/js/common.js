@@ -15,8 +15,8 @@ function changeStatus(name,page){
             		var appendCategory = "<li><a href='#' onclick=searchVideo("+ obj.cid +",'" + page + "');  class='page-nav-item'> <i class='icon-video icon'></i> " + obj.name + "</a></li>";						
             		$("#pageNav").append(appendCategory);
 	            });
-				var appendCategory = "<li><a href='#' onclick=getPersonInfo('"+ page +"','" + name + "');  class='page-nav-item'> <i class='icon-video icon'></i> 個資輸入 </a></li>";						
-        		$("#pageNav").append(appendCategory);	
+			/*	var appendCategory = "<li><a href='#' onclick=getPersonInfo('"+ page +"','" + name + "');  class='page-nav-item'> <i class='icon-video icon'></i> 個資輸入 </a></li>";						
+        		$("#pageNav").append(appendCategory);*/	
         	},
         	error : function(xhr,ajaxOption,error) {
         		alert(xhr.responseText);
@@ -61,7 +61,7 @@ function successStatus(data){
 	$("#title").text(data.title);
 	$("#subtitle").text(data.subtitle);
 	$("#description").text(data.description);
-	$("#fileDownload,#personInfo").css('display','none');
+	$("#fileDownload").css('display','none');
 	if(data.fileUrl != "" && data.fileUrl != undefined){
 			$("#fileDownload").css('display','block');
 			$("#fileUrl").text(data.fileUrl);
@@ -110,7 +110,7 @@ function invalidateSession(){
 
 function getPersonInfo(page,name){
 	
-	$("#nameFlag,#taxIdFlag,#birthdayFlag,#phoneFlag,#emailFlag,#residenceAddressFlag,#communicationAddressFlag").hide();
+//	$("#nameFlag,#taxIdFlag,#birthdayFlag,#phoneFlag,#emailFlag,#residenceAddressFlag,#communicationAddressFlag").hide();
 	
 	jQuery.validator.addMethod("isPhone", function(value, element) {
         var mobile = /^09\d{8}$/;
@@ -242,8 +242,8 @@ function getPersonInfo(page,name){
             	$("#otherLoans").attr("checked",data.otherLoans == "1" ? true : false ); 
             	
             	$("#videoPlayer,#subtitle,#title,#description,#videoInfo,#fileDownload").css('display','none');
-            	$("#"+ page).css('display','none');	
-            	$("#personInfo").css('display','block');
+    //        	$("#"+ page).css('display','none');	
+    //        	$("#personInfo").css('display','block');
             	
         	},
         	error : function(xhr,ajaxOption,error) {

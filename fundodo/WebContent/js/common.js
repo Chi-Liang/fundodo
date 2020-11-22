@@ -2,7 +2,7 @@ function changeStatus(name,page){
 			
 	$.ajax({
             type :"GET",
-            url  : "http://www.fundodo.tk/pl-admin/api/category/list",
+            url  : "https://www.fundodo.net/pl-admin/api/category/list",
             async : false,
        		data : { 
        			mid : name
@@ -39,7 +39,7 @@ function setFileInfo(){
 function searchVideo(objCid,page){
 	$.ajax({
         type :"GET",
-        url  : "http://www.fundodo.tk/pl-admin/api/video/list",
+        url  : "https://www.fundodo.net/pl-admin/api/video/list",
         async : false,
    		data : { 
    			cid : objCid
@@ -203,7 +203,7 @@ function getPersonInfo(page,name){
 	
 	$.ajax({
             type :"GET",
-            url  : "http://www.fundodo.tk/pl-admin/api/personInfo/byMember",
+            url  : "https://www.fundodo.net/pl-admin/api/personInfo/byMember",
             dataType : 'json', 
             contentType : 'application/json; charset=utf-8',
             async : false,
@@ -315,7 +315,7 @@ function enterPersonInfo(){
 	
 	$.ajax({
             type :"POST",
-            url  : "http://www.fundodo.tk/pl-admin/api/personInfo/insertOrUpdate",
+            url  : "https://www.fundodo.net/pl-admin/api/personInfo/insertOrUpdate",
             async : false,
             contentType : 'application/json; charset=utf-8', 
             data : JSON.stringify(obj),

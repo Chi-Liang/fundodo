@@ -69,13 +69,13 @@
                                 <a href=""><img class="img-fluid" src="images/poster.jpg" alt=""></a>
                             </div>-->
                             <div class="Poster-item">
-                                <a href=""><img class="img-fluid" src="images/poster1.jpg" alt=""></a>
+                                <a href="banner.jsp"><img class="img-fluid" src="images/poster1.jpg" alt=""></a>
                             </div>
                             <div class="Poster-item">
-                                <a href=""><img class="img-fluid" src="images/poster2.jpg" alt=""></a>
+                                <a href="banner.jsp"><img class="img-fluid" src="images/poster2.jpg" alt=""></a>
                             </div>
                             <div class="Poster-item">
-                                <a href=""><img class="img-fluid" src="images/poster3.jpg" alt=""></a>
+                                <a href="banner.jsp"><img class="img-fluid" src="images/poster3.jpg" alt=""></a>
                             </div>
                         </div>
 
